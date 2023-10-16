@@ -20,14 +20,24 @@ params.input = [
 
 workflow GROUPTUPLEONKEYS{
     ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+        // Add key to meta map that makes the meta distinct.
+        .map { meta, letter -> [ meta + [ letter: letter ] ] }
 }
 
 workflow JOINONKEYS{
     ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+        // Add key to meta map that makes the meta distinct.
+        .map { meta, letter -> [ meta + [ letter: letter ] ] }
     ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
+        // Add key to meta map that makes the meta distinct.
+        .map { meta, number -> [ meta + [ number: number ] ] }
 }
 
 workflow COMBINEONKEYS{
     ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+        // Add key to meta map that makes the meta distinct.
+        .map { meta, letter -> [ meta + [ letter: letter ] ] }
     ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
+        // Add key to meta map that makes the meta distinct.
+        .map { meta, number -> [ meta + [ number: number ] ] }
 }
