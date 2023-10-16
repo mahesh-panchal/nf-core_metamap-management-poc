@@ -1,5 +1,10 @@
 params.input = [
-    sample: [ name: "Test", ploidy: 2, chr_count: 13, genome_size: 2300000 ],
+    sample: [ 
+        name: "Test", 
+        ploidy: 2, 
+        chr_count: 13, 
+        genome_size: 2300000 
+    ],
     reads: [
         hic: [ 
             kmer_cov: 15,
