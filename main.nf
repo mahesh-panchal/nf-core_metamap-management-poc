@@ -28,6 +28,8 @@ workflow GROUPTUPLEONKEYS{
     ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, letter -> [ meta + [ letter: letter ] ] }
+
+    ch_letters.groupTupleOnKeys('sample').view()
 }
 
 workflow JOINONKEYS{
@@ -37,6 +39,9 @@ workflow JOINONKEYS{
     ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, number -> [ meta + [ number: number ] ] }
+    
+    // Test new functions
+    ch_letters.joinOnKeys(ch_numbers,'sample').view()
 }
 
 workflow COMBINEONKEYS{
@@ -46,4 +51,6 @@ workflow COMBINEONKEYS{
     ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, number -> [ meta + [ number: number ] ] }
+
+    ch_letters.combineOnKeys(ch_numbers,'sample').view()
 }
