@@ -1,4 +1,4 @@
-params.input = [
+meta_map = [
     sample: [ 
         name: "Test", 
         ploidy: 2, 
@@ -25,7 +25,7 @@ params.input = [
 ]
 
 workflow GROUPTUPLEONKEYS{
-    ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+    ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, letter -> [ meta + [ letter: letter ] ] }
 
@@ -33,10 +33,10 @@ workflow GROUPTUPLEONKEYS{
 }
 
 workflow JOINONKEYS{
-    ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+    ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, letter -> [ meta + [ letter: letter ] ] }
-    ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
+    ch_numbers = Channel.of( [ meta_map, '1' ], [ meta_map, '2' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, number -> [ meta + [ number: number ] ] }
     
@@ -45,10 +45,10 @@ workflow JOINONKEYS{
 }
 
 workflow COMBINEONKEYS{
-    ch_letters = Channel.of( [ params.input, 'A' ], [ params.input, 'B' ] )
+    ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, letter -> [ meta + [ letter: letter ] ] }
-    ch_numbers = Channel.of( [ params.input, '1' ], [ params.input, '2' ] )
+    ch_numbers = Channel.of( [ meta_map, '1' ], [ meta_map, '2' ] )
         // Add key to meta map that makes the meta distinct.
         .map { meta, number -> [ meta + [ number: number ] ] }
 
