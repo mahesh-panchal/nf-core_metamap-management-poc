@@ -1,21 +1,22 @@
 params.input = [
-    sample: 
-        name: "Test" 
-        ploidy: 2 
-        chr_count: 13
-        genome_size: 2300000
-    reads:
-        hic: 
-            kmer_cov: 15
+    sample: [ name: "Test", ploidy: 2, chr_count: 13, genome_size: 2300000 ],
+    reads: [
+        hic: [ 
+            kmer_cov: 15,
             single_end: false
-        hifi: 
-            kmer_cov: 50
+        ],
+        hifi: [ 
+            kmer_cov: 50,
             single_end: true
-    assembly:
-        assembler: "hifi"
+        ],
+    ],
+    assembly: [
+        assembler: "hifi",
         stage: "assemble"
-    tools:
+    ],
+    tools: [
         busco_lineages: "auto"
+    ]
 ]
 
 workflow GROUPTUPLEONKEYS{
