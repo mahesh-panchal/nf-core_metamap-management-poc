@@ -29,7 +29,7 @@ workflow GROUPTUPLEONKEYS{
         // Add key to meta map that makes the meta distinct.
         .map { meta, letter -> [ meta + [ letter: letter ] ] }
 
-    ch_letters.groupTupleOnKeys('sample').view()
+    ch_letters.groupTupleOnMetaKeys(keys:'sample').view()
 }
 
 workflow JOINONKEYS{
