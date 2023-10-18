@@ -1,3 +1,5 @@
+include { groupTupleOnMetaKeys } from 'plugin/nf-metaMapOperators'
+
 meta_map = [
     sample: [ 
         name: "Test", 
