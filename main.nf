@@ -29,7 +29,7 @@ meta_map = [
 workflow GROUPTUPLEONKEYS{
     ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
-        .map { meta, letter -> [ meta + [ letter: letter ] ] }
+        .map { meta, letter -> [ meta + [ letter: letter ], letter ] }
 
     ch_letters.groupTupleOnMetaKeys(keys:'sample').view()
 }
@@ -37,10 +37,10 @@ workflow GROUPTUPLEONKEYS{
 workflow JOINONKEYS{
     ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
-        .map { meta, letter -> [ meta + [ letter: letter ] ] }
+        .map { meta, letter -> [ meta + [ letter: letter ], letter ] }
     ch_numbers = Channel.of( [ meta_map, '1' ], [ meta_map, '2' ] )
         // Add key to meta map that makes the meta distinct.
-        .map { meta, number -> [ meta + [ number: number ] ] }
+        .map { meta, number -> [ meta + [ number: number ], number ] }
     
     // Test new functions
     ch_letters.joinOnKeys(ch_numbers,'sample').view()
@@ -49,10 +49,10 @@ workflow JOINONKEYS{
 workflow COMBINEONKEYS{
     ch_letters = Channel.of( [ meta_map, 'A' ], [ meta_map, 'B' ] )
         // Add key to meta map that makes the meta distinct.
-        .map { meta, letter -> [ meta + [ letter: letter ] ] }
+        .map { meta, letter -> [ meta + [ letter: letter ], letter ] }
     ch_numbers = Channel.of( [ meta_map, '1' ], [ meta_map, '2' ] )
         // Add key to meta map that makes the meta distinct.
-        .map { meta, number -> [ meta + [ number: number ] ] }
+        .map { meta, number -> [ meta + [ number: number ], number ] }
 
     ch_letters.combineOnKeys(ch_numbers,'sample').view()
 }
