@@ -4,11 +4,11 @@ Proof-of-concept for managing meta data in nf-core workflows
 
 ## Considerations
 
-- meta.id required
-- meta.single_end optional
+* meta.id required
+* meta.single_end optional
 
 ## Operators
 
--`join`
--`combine`
--`groupTuple`
+* `join`
+* `combine`
+* `groupTuple`
